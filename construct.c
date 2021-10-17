@@ -14,8 +14,8 @@ void print_struct(struct con s){
 }
 
 void print_list(struct con *s){
-  if (s->level != 0 && s->class[0] != 0){
-    print_struct(*s);
+  print_struct(*s);
+  if (s->next != NULL){
     print_list(s->next);
   }
 }
@@ -34,14 +34,18 @@ struct con * insert_front(struct con *s, int l, char *c){
   return front;
 }
 
+// struct con * free_list(struct con *s){
+//
+// }
+
 int main(){
   srand(time(NULL));
 
-  struct con *s = make(rand(),"wizard");
-  print_struct(*s);
+  struct con *s = make(100,"wizard");
+  print_list(s);
   free(s);
 
-  struct con *x = make(rand(),"knight");
-  print_struct(*x);
+  struct con *x = make(12,"knight");
+  print_list(x);
   free(x);
 }
