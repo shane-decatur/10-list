@@ -47,6 +47,7 @@ int main(){
 
   struct con *s = make(100,"wizard");
   s = insert_front(s,12,"knight");
+  s = insert_front(s,0,"court jester");
   print_list(s);
   printf("%p\n",s);
   printf("%p\n",free_list(s));
