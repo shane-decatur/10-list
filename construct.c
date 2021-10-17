@@ -34,18 +34,24 @@ struct con * insert_front(struct con *s, int l, char *c){
   return front;
 }
 
-// struct con * free_list(struct con *s){
-//
-// }
+struct con * free_list(struct con *s){
+  free(s);
+  if (s->next != NULL){
+    free_list(s->next);
+  }
+  return s;
+}
 
 int main(){
   srand(time(NULL));
 
   struct con *s = make(100,"wizard");
+  s = insert_front(s,12,"knight");
   print_list(s);
-  free(s);
+  printf("%p\n",s);
+  printf("%p\n",free_list(s));
 
-  struct con *x = make(12,"knight");
-  print_list(x);
-  free(x);
+  // struct con *x = make(12,"knight");
+  // print_list(x);
+  // free(x);
 }
