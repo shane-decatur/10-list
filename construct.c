@@ -28,6 +28,12 @@ struct con * make(int l, char *c){
   return s;
 }
 
+struct con * insert_front(struct con *s, int l, char *c){
+  struct con *front = make(l,c);
+  front->next = s;
+  return front;
+}
+
 int main(){
   srand(time(NULL));
 
