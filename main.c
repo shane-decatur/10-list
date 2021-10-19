@@ -10,6 +10,9 @@ int main(){
   s = insert_front(s,12,"knight");
   s = insert_front(s,0,"court jester");
   print_list(s);
+
+  s = remove_node(s, 0);
+  print_list(s);
   // printf("%p\n",s);
   // printf("%p\n",free_list(s));
 

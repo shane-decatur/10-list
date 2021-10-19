@@ -41,3 +41,24 @@ struct con * free_list(struct con *s){
   }
   return s;
 }
+
+struct con * remove_node(struct con *front, int data){
+  struct con * return_val = front;
+  struct con * next_node;
+
+  if (front->level == data){
+    return_val = front->next;
+    free(front);
+  }
+  while (front->next){
+     next_node = front->next;
+     if (next_node->level == data){
+       front->next = next_node->next;
+       free(next_node);
+     }
+     else{
+       front = front->next;
+     }
+  }
+  return return_val;
+}
